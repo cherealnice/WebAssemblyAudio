@@ -1,0 +1,1 @@
+emcc -o hello.js hello.c -O3 -s WASM=1 -s NO_EXIT_RUNTIME=1
