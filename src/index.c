@@ -10,10 +10,6 @@ int main(int argc, char ** argv) {
 extern "C" {
 #endif
 
-void EMSCRIPTEN_KEEPALIVE myFunction(int argc, char ** argv) {
-  printf("MyFunction Called\n");
-}
-
 float* EMSCRIPTEN_KEEPALIVE whiteNoise(float *doubleVector) {
   for(int i = 0; i < 1024; i++) {
     doubleVector[i] = rand()/(float)RAND_MAX;
@@ -22,7 +18,11 @@ float* EMSCRIPTEN_KEEPALIVE whiteNoise(float *doubleVector) {
   return doubleVector;
 }
 
+float* EMSCRIPTEN_KEEPALIVE play(float *doubleVector) {
+
+  return doubleVector;
+}
+
 #ifdef __cplusplus
 }
 #endif
-
