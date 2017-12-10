@@ -1,28 +1,18 @@
-#include <stdio.h>
-#include <emscripten/emscripten.h>
-#include <stdlib.h>
+const int SIZE = 1024;
+int data[1024];
 
-int main(int argc, char ** argv) {
-    printf("Hello World\n");
-}
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-float* EMSCRIPTEN_KEEPALIVE whiteNoise(float *doubleVector) {
-  for(int i = 0; i < 1024; i++) {
-    doubleVector[i] = rand()/(float)RAND_MAX;
+void add(int value) { 
+  for (int i=0; i<SIZE; i++) {
+    data[i] = data[i] + value;
   }
-  
-  return doubleVector;
 }
 
-float* EMSCRIPTEN_KEEPALIVE play(float *doubleVector) {
-
-  return doubleVector;
+int* getData() {
+  return &data[0];
 }
 
-#ifdef __cplusplus
+void play() {
+  for (int i=0; i<SIZE; i++) {
+    data[i] = data[i];
+  }
 }
-#endif
